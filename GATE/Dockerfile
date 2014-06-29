@@ -7,7 +7,7 @@
 #  
 #
 
-FROM dvolgyes/vgate3_vanilia:original
+FROM dvolgyes/vgate3_vanilia
 MAINTAINER David Völgyes <david.volgyes@ieee.org>
 
 # Setting environment variables
