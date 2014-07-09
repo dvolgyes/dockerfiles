@@ -14,6 +14,8 @@ MAINTAINER David Völgyes <david.volgyes@ieee.org>
 ENV TERM linux
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN dpkg-divert --local --rename /usr/bin/ischroot && ln -sf /bin/true /usr/bin/ischroot
+
 RUN  apt-get update
 RUN  apt-get install    -y --force-yes dialog debconf-utils
 RUN  apt-get clean
