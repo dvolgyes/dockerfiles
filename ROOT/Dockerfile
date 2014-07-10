@@ -24,12 +24,9 @@ RUN  apt-get clean
 
 RUN mkdir -p /opt/src
 RUN mkdir -p /opt/root
-RUN cd /opt/src
-RUN git clone http://root.cern.ch/git/root.git
-RUN mv root root-src
-RUN cd /opt/src/root-src
-RUN git checkout -b v6-00-02
-RUN cd /opt/root
-RUN cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D builtin_gsl=ON  -D python=ON -D soversion=ON   /opt/src/root-src/
-RUN make -j4
-RUN make install
+RUN cd /opt/src ; git clone http://root.cern.ch/git/root.git
+RUN mv /opt/src/root /opt/src/root-src
+RUN cd /opt/src/root-src ; git checkout -b v6-00-02
+RUN cd /opt/root ; cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D builtin_gsl=ON  -D python=ON -D soversion=ON   /opt/src/root-src/
+RUN make -C /opt/root
+RUN make install  -C /opt/root
