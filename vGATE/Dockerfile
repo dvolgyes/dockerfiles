@@ -43,5 +43,6 @@ ADD sudoers /etc/sudoers
 ADD bashrc /home/gate/.bashrc
 ADD bash_gate /home/gate/.bash_gate
 RUN rm /home/gate/.bash_history
+RUN chmod 0440 /etc/sudoers
 
 CMD ["su","-l","gate"]
